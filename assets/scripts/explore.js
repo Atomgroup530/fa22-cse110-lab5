@@ -32,6 +32,7 @@ function init() {
     speechSynthesis.onvoiceschanged = populateVoiceList;
   }
   // #2 Enable text-to-speech
+  let utterThis;
   function speak() {
     if (synth.speaking) {
       console.error("speechSynthesis.speaking");
@@ -39,9 +40,11 @@ function init() {
     }
 
     if (inputTxt.value !== '') {
-      const utterThis = new SpeechSynthesisUtterance(inputTxt.value);
+      utterThis = new SpeechSynthesisUtterance(inputTxt.value);
 
       utterThis.onend = function (event) {
+        // close mouth on end
+        closeMouth();
         console.log("SpeechSynthesisUtterance.onend");
       };
 
@@ -61,9 +64,18 @@ function init() {
       synth.speak(utterThis);
     }
   }
+  // #3 switch faces
+  function openMouth() {
+    face.src = 'assets/images/smiling-open.png';
+    face.alt = 'Talking face';
+  }
+  function closeMouth() {
+    face.src = 'assets/images/smiling.png';
+    face.alt = 'Smiling face';
+  }
 
   button.addEventListener('click', () => {
+    openMouth();
     speak();
   });
-
 }
