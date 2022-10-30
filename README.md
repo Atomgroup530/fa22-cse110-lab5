@@ -9,3 +9,4 @@ Link to the website generated with fa22-cse110-lab5:
 https://atomgroup530.github.io/fa22-cse110-lab5/
 
 Linke to the website generated with introduction-to-github:
+https://atomgroup530.github.io/introduction-to-github/
